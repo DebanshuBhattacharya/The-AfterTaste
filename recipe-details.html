@@ -17,15 +17,16 @@
       <a class="logo" href="index.html">The AfterTaste</a>
       <div class="header-right">
         <a href="index.html#recipes" class="back-link">
-          <i class="fa-solid fa-arrow-left"></i> All Recipes
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>All Recipes</span>
         </a>
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">🌙</button>
       </div>
     </header>
 
     <div class="container">
 
-      <article class="hero reveal">
+      <!-- Recipe Hero: Image + Title/Description -->
+      <article class="hero">
         <div class="hero-img-wrap">
           <img id="recipeImage" src="" alt="" />
         </div>
@@ -41,29 +42,32 @@
         </div>
       </article>
 
+      <!-- Ingredients & Steps -->
       <div class="detail-grid">
-
-        <section class="section reveal-left">
+        <section class="section">
           <h2><i class="fa-solid fa-list-ul"></i> Ingredients</h2>
           <ul id="ingredientsList"></ul>
         </section>
 
-        <section class="section reveal-right">
+        <section class="section">
           <h2><i class="fa-solid fa-utensils"></i> How To Make It</h2>
           <ol id="stepsList"></ol>
         </section>
-
       </div>
 
-      <section class="section zoom-reveal">
+      <!-- Related Recipes -->
+      <section class="section">
         <h2><i class="fa-solid fa-fire"></i> Related Recipes</h2>
         <div class="related-grid" id="relatedGrid"></div>
       </section>
 
     </div>
 
-    <footer class="footer">&copy; 2026 The AfterTaste. All rights reserved.</footer>
+    <footer class="footer">
+      &copy; 2026 The AfterTaste. All rights reserved.
+    </footer>
 
+    <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" type="button" aria-label="Scroll back to top">
       <i class="fa-solid fa-arrow-up"></i>
     </button>
