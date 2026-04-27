@@ -170,7 +170,7 @@ const observer = new IntersectionObserver(
   { threshold: 0.1 }
 );
 document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .zoom-reveal")
-  .forEach((el) => observer.observe(el));
+  .forEach((el) => observer.observe(el)); 
 
 /* ── Back to Top ─────────────────────────────────── */
 const backToTop = document.getElementById("backToTop");
