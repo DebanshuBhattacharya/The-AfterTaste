@@ -5,8 +5,11 @@
   box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
+/* ── CSS Variables (reusable values) ────────────── */
 :root {
   --cream:      #fffaf3;
   --cream-mid:  #fff3e7;
@@ -27,6 +30,7 @@ html { scroll-behavior: smooth; }
   --transition: 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* ── Body ───────────────────────────────────────── */
 body {
   font-family: "DM Sans", sans-serif;
   background: linear-gradient(180deg, var(--cream) 0%, var(--cream-mid) 100%);
@@ -53,12 +57,7 @@ input, button { font: inherit; }
   justify-content: space-between;
   align-items: center;
   padding: 0.85rem 1.5rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
   background: var(--header-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
 
@@ -67,7 +66,6 @@ input, button { font: inherit; }
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--brown-dark);
-  letter-spacing: -0.01em;
 }
 
 .header-right {
@@ -76,6 +74,7 @@ input, button { font: inherit; }
   gap: 0.7rem;
 }
 
+/* "All Recipes" back button in the header */
 .back-link {
   display: flex;
   align-items: center;
@@ -89,23 +88,11 @@ input, button { font: inherit; }
   border-radius: 6px;
   transition: background var(--transition);
 }
-.back-link:hover { background: #fce8d8; }
-
-.theme-toggle {
-  border: 1px solid var(--border);
-  background: var(--cream);
-  width: 2.1rem;
-  height: 2.1rem;
-  border-radius: 0.5rem;
-  font-size: 0.9rem;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition: background var(--transition);
+.back-link:hover {
+  background: #fce8d8;
 }
-.theme-toggle:hover { background: #fce8d8; }
 
-/* ── Hero ───────────────────────────────────────── */
+/* ── Hero (Image + Info side by side) ───────────── */
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -117,7 +104,9 @@ input, button { font: inherit; }
   margin: 1.5rem 0 1.6rem;
 }
 
-.hero-img-wrap { overflow: hidden; }
+.hero-img-wrap {
+  overflow: hidden;
+}
 
 .hero-img-wrap img {
   height: 100%;
@@ -125,7 +114,9 @@ input, button { font: inherit; }
   object-fit: cover;
   transition: transform 0.5s ease;
 }
-.hero:hover .hero-img-wrap img { transform: scale(1.04); }
+.hero:hover .hero-img-wrap img {
+  transform: scale(1.04);
+}
 
 .hero-content {
   padding: 2rem 2rem 1.8rem;
@@ -160,13 +151,13 @@ input, button { font: inherit; }
   color: var(--brown-mute);
 }
 
-.hero-content #recipeDescription {
+#recipeDescription {
   font-size: 0.97rem;
   color: var(--brown-soft);
   flex: 1;
 }
 
-/* ── Save Button (hero) ─────────────────────────── */
+/* ── Save Button ────────────────────────────────── */
 .save-btn {
   display: flex;
   align-items: center;
@@ -183,10 +174,17 @@ input, button { font: inherit; }
   margin-top: 0.4rem;
   transition: background var(--transition), transform var(--transition);
 }
-.save-btn:hover { background: #fce8d8; transform: translateY(-1px); }
-.save-btn.saved { background: var(--brown-dark); color: #fff; border-color: var(--brown-dark); }
+.save-btn:hover {
+  background: #fce8d8;
+  transform: translateY(-1px);
+}
+.save-btn.saved {
+  background: var(--brown-dark);
+  color: #fff;
+  border-color: var(--brown-dark);
+}
 
-/* ── Detail Grid ────────────────────────────────── */
+/* ── Ingredients & Steps Grid ───────────────────── */
 .detail-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -194,7 +192,7 @@ input, button { font: inherit; }
   margin-bottom: 1.2rem;
 }
 
-/* ── Section Cards ──────────────────────────────── */
+/* ── Section Cards (shared style) ──────────────── */
 .section {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -218,7 +216,7 @@ input, button { font: inherit; }
   font-size: 1rem;
 }
 
-/* Ingredients list */
+/* ── Ingredients List ───────────────────────────── */
 #ingredientsList {
   list-style: none;
   display: flex;
@@ -238,6 +236,7 @@ input, button { font: inherit; }
   border-radius: 8px;
 }
 
+/* Orange dot before each ingredient */
 #ingredientsList li::before {
   content: "";
   width: 7px;
@@ -247,13 +246,13 @@ input, button { font: inherit; }
   flex-shrink: 0;
 }
 
-/* Steps list */
+/* ── Steps List ─────────────────────────────────── */
 #stepsList {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  counter-reset: steps;
+  counter-reset: steps; /* starts counting from 1 */
 }
 
 #stepsList li {
@@ -265,6 +264,7 @@ input, button { font: inherit; }
   color: var(--brown-soft);
 }
 
+/* Numbered circle before each step */
 #stepsList li::before {
   content: counter(steps);
   min-width: 1.8rem;
@@ -280,7 +280,7 @@ input, button { font: inherit; }
   margin-top: 0.05rem;
 }
 
-/* ── Related Grid ───────────────────────────────── */
+/* ── Related Recipes Grid ───────────────────────── */
 .related-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -305,7 +305,9 @@ input, button { font: inherit; }
   object-fit: cover;
   transition: transform 0.45s ease;
 }
-.related-card:hover img { transform: scale(1.05); }
+.related-card:hover img {
+  transform: scale(1.05);
+}
 
 .related-card div {
   padding: 0.75rem 0.85rem 0.9rem;
@@ -338,7 +340,7 @@ input, button { font: inherit; }
   font-size: 0.9rem;
 }
 
-/* ── Back to Top ────────────────────────────────── */
+/* ── Back to Top Button ─────────────────────────── */
 .back-to-top {
   position: fixed;
   right: 1.2rem;
@@ -359,66 +361,13 @@ input, button { font: inherit; }
   transition: opacity 0.25s, transform 0.25s;
   box-shadow: 0 8px 18px rgba(138, 75, 42, 0.35);
 }
-.back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
-
-/* ── Scroll Reveal ──────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(50px);
-  filter: blur(5px);
-  transition: opacity 0.85s var(--transition), transform 0.85s var(--transition), filter 0.85s ease;
-}
-.reveal.show { opacity: 1; transform: translateY(0); filter: blur(0); }
-
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-60px);
-  filter: blur(5px);
-  transition: opacity 0.85s var(--transition), transform 0.85s var(--transition), filter 0.85s ease;
-}
-.reveal-left.show { opacity: 1; transform: translateX(0); filter: blur(0); }
-
-.reveal-right {
-  opacity: 0;
-  transform: translateX(60px);
-  filter: blur(5px);
-  transition: opacity 0.85s var(--transition), transform 0.85s var(--transition), filter 0.85s ease;
-}
-.reveal-right.show { opacity: 1; transform: translateX(0); filter: blur(0); }
-
-.zoom-reveal {
-  opacity: 0;
-  transform: scale(0.92);
-  transition: opacity 0.85s ease, transform 0.85s ease;
-}
-.zoom-reveal.show { opacity: 1; transform: scale(1); }
-
-/* ── Dark Theme ─────────────────────────────────── */
-body.dark {
-  --cream:      #0f172a;
-  --cream-mid:  #111827;
-  --brown-text: #e2e8f0;
-  --brown-soft: #cbd5e1;
-  --brown-mute: #94a3b8;
-  --border:     rgba(148, 163, 184, 0.15);
-  --card-bg:    #111827;
-  --header-bg:  rgba(15, 23, 42, 0.93);
-  --tag-bg:     #1e293b;
-  --tag-color:  #93c5fd;
-  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+.back-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
-body.dark .logo { color: #67e8f9; }
-body.dark .back-link { background: #1e293b; border-color: #334155; color: #bfdbfe; }
-body.dark .back-link:hover { background: #263044; }
-body.dark .theme-toggle { background: #1f2937; color: #e5e7eb; }
-body.dark .save-btn { background: #1f2937; border-color: #334155; color: #bfdbfe; }
-body.dark .save-btn:hover { background: #263044; }
-body.dark .save-btn.saved { background: #67e8f9; color: #0f172a; border-color: #67e8f9; }
-body.dark #ingredientsList li { background: #0f172a; }
-body.dark .related-card { background: #0f172a; }
-
-/* ── Responsive ─────────────────────────────────── */
+/* ── Responsive (Tablet) ────────────────────────── */
 @media (max-width: 820px) {
   .hero { grid-template-columns: 1fr; }
   .hero-img-wrap img { min-height: 260px; height: 260px; }
@@ -426,10 +375,11 @@ body.dark .related-card { background: #0f172a; }
   .related-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* ── Responsive (Mobile) ────────────────────────── */
 @media (max-width: 520px) {
   .header { padding: 0.75rem 1rem; }
   .logo { font-size: 1.3rem; }
-  .back-link span { display: none; }
+  .back-link span { display: none; } /* hide "All Recipes" text, keep arrow icon */
   .hero-content { padding: 1.4rem 1.2rem; }
   .related-grid { grid-template-columns: 1fr; }
 }
